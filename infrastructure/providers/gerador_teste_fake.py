@@ -1,4 +1,4 @@
-from core.usecases.gerador_teste_port import GeradorTestePort
+from core.usecases.ports.gerador_teste_port import GeradorTestePort
 from core.entities.historia_usuario import HistoriaUsuario
 from shared.models.teste_models import TesteGeradoOutput
 

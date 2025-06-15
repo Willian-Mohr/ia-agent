@@ -1,5 +1,5 @@
 from core.entities.historia_usuario import HistoriaUsuario
-from core.usecases.gerador_teste_port import GeradorTestePort
+from core.usecases.ports.gerador_teste_port import GeradorTestePort
 from shared.models.teste_models import TesteGeradoOutput
 
 class GerarCenarioTesteUseCase:
