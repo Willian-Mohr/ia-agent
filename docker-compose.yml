@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: ankane/pgvector
+    container_name: ia_pgvector
+    environment:
+      POSTGRES_USER: iauser
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: iadb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - ia_network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: ia_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_SERVER_JSON_FILE: /servers.json
+    ports:
+      - "5050:80"
+    depends_on:
+      - postgres
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin
+      - ./servers.json:/servers.json
+    networks:
+      - ia_network
+
+networks:
+  ia_network:
+    driver: bridge
+
+volumes:
+  pgdata:
+  pgadmin_data:
