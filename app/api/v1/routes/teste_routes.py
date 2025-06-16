@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from core.entities.historia_usuario import HistoriaUsuario
 from core.usecases.gerar_cenario_teste import GerarCenarioTesteUseCase
-from infrastructure.providers.gerador_teste_fake import GeradorTesteFake
 from shared.models.teste_models import HistoriaUsuarioInput
 from infrastructure.providers.gerador_teste_openai import GeradorTesteOpenAI
 

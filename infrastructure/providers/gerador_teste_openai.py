@@ -1,16 +1,14 @@
-import openai
 from openai import OpenAI
-
 from core.usecases.ports.gerador_teste_port import GeradorTestePort
 from core.entities.historia_usuario import HistoriaUsuario
 from shared.models.teste_models import TesteGeradoOutput
 from shared.config.env import OPENAI_API_KEY
 
 class GeradorTesteOpenAI(GeradorTestePort):
-    def __init__(self, modelo: str = "gpt-3.5-turbo"):
+    def __init__(self, modelo: str = "gpt-4"):
         self.client = OpenAI(api_key=OPENAI_API_KEY)
         self.modelo = modelo
-        
+
     def gerar_teste(self, historia: HistoriaUsuario) -> TesteGeradoOutput:
         prompt = (
             f"Com base na seguinte história de usuário:\n\n"
