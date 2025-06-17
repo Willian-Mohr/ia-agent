@@ -9,8 +9,8 @@ class DependencyFactory:
     
     @staticmethod
     def create_vector_store_service() -> VectorStoreService:
-        """Cria uma instância do serviço de vectorstore"""
-        return VectorStoreService()
+        """Cria uma instância do serviço de vectorstore com threshold mais restritivo"""
+        return VectorStoreService(similarity_threshold=0.85)
     
     @staticmethod
     def create_gerador_teste_port() -> GeradorTestePort:
